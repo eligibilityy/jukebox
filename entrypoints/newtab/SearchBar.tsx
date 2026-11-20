@@ -249,14 +249,14 @@ export function SearchBar() {
                   <span className="bang-trigger">
                     {suggestion.bang.trigger}
                   </span>
-                  <div className="text-sm text-white/60">
+                  <div className="text-sm text-(color:--text-secondary)">
                     Search on {suggestion.bang.name}
                   </div>
                 </>
               ) : (
                 <>
                   <Search
-                    className="size-4 shrink-0 text-white/40"
+                    className="size-4 shrink-0 text-(color:--text-muted)"
                     strokeWidth={2.5}
                     aria-hidden="true"
                   />
