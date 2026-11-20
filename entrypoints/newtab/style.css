@@ -1,9 +1,6 @@
 @import "tailwindcss";
 
-@import "@fontsource/open-runde/400.css";
-@import "@fontsource/open-runde/500.css";
-@import "@fontsource/open-runde/600.css";
-@import "@fontsource/open-runde/700.css";
+@import "allo-font/friendly";
 
 :root {
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -39,8 +36,9 @@ body,
 
 body {
   background-color: black;
-  font-family: "Open Runde", system-ui, sans-serif;
+  font-family: "Allo", system-ui, sans-serif;
   font-synthesis: none;
+  font-variant-numeric: tabular-nums;
   color: white;
   overflow: hidden;
 }
@@ -156,7 +154,6 @@ body {
   width: min(38vh, 22rem);
   margin-top: 0.4rem;
   font-size: 0.75rem;
-  font-variant-numeric: tabular-nums;
   color: rgb(255 255 255 / 0.6);
 }
 
@@ -851,7 +848,6 @@ body {
 
 .quick-dial-count {
   font-size: 0.75rem;
-  font-variant-numeric: tabular-nums;
   color: var(--text-muted);
 }
 
