@@ -1,5 +1,5 @@
 import { Popover } from "@base-ui/react/popover";
-import { AnimatePresence, MotionConfig, motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import {
   ArrowDown,
   ArrowUp,
@@ -73,21 +73,19 @@ export function QuickDial() {
         onOpenChangeComplete={handleOpenChangeComplete}
       >
         <Popover.Trigger className="quick-dial-trigger">
-          <LayoutGrid className="quick-dial-icon size-4" aria-hidden="true" />
+          <LayoutGrid className="size-4" aria-hidden="true" />
           <span>Quick dial</span>
         </Popover.Trigger>
         <Popover.Portal>
           <Popover.Positioner align="start" sideOffset={8}>
             <Popover.Popup className="quick-dial-popup" aria-label="Quick dial">
-              <MotionConfig reducedMotion="user">
-                <QuickDialPanel
-                  links={links}
-                  mode={mode}
-                  editingId={editingId}
-                  onModeChange={setMode}
-                  onEditingChange={setEditingId}
-                />
-              </MotionConfig>
+              <QuickDialPanel
+                links={links}
+                mode={mode}
+                editingId={editingId}
+                onModeChange={setMode}
+                onEditingChange={setEditingId}
+              />
             </Popover.Popup>
           </Popover.Positioner>
         </Popover.Portal>

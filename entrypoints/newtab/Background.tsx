@@ -1,4 +1,5 @@
 import { Kawarp } from "@kawarp/core";
+import { useReducedMotion } from "motion/react";
 import { coverColor } from "./coverColor";
 
 const RESOLUTION = 0.5;
@@ -12,6 +13,7 @@ type BackgroundProps = {
 export function Background({ coverUrl, visible, animate }: BackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const kawarpRef = useRef<Kawarp | null>(null);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -69,16 +71,13 @@ export function Background({ coverUrl, visible, animate }: BackgroundProps) {
     const kawarp = kawarpRef.current;
     if (!kawarp) return;
 
-    if (animate) {
-      const reduceMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
-      kawarp.animationSpeed = reduceMotion ? 0.1 : 1;
+    if (animate && !reduceMotion) {
+      kawarp.animationSpeed = 1;
       kawarp.start();
     } else {
       kawarp.stop();
     }
-  }, [animate]);
+  }, [animate, reduceMotion]);
   return (
     <div
       className={`background ${visible ? "visible" : ""}`}

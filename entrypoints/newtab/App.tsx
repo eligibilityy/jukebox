@@ -1,6 +1,8 @@
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { recentItem } from "@/lib/music/store";
 import { Background } from "./Background";
 import { Clock } from "./Clock";
+import { SPRING, useSwapAnimation } from "./motion";
 import { NowPlayingCard } from "./NowPlayingCard";
 import { QuickDial } from "./QuickDial";
 import { RecentlyPlayed } from "./RecentlyPlayed";
@@ -17,6 +19,7 @@ function App() {
   const recent = useStorageValue(recentItem) ?? [];
   const showRecent = useStorageValue(showRecentItem);
   const animateBackground = useStorageValue(animateBackgroundItem);
+  const swap = useSwapAnimation();
 
   if (nowPlaying === undefined) return null;
 
@@ -24,7 +27,7 @@ function App() {
   const playing = nowPlaying?.isPlaying === true;
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <Background
         visible={hasTrack}
         coverUrl={nowPlaying?.coverUrl ?? null}
@@ -36,13 +39,26 @@ function App() {
         <div className="spacer-outer" />
         <Clock compact={hasTrack} />
         <div className="spacer-center">
-          {nowPlaying && <NowPlayingCard track={nowPlaying} />}
+          <AnimatePresence initial={false} mode="popLayout">
+            {nowPlaying && (
+              <motion.div key={nowPlaying.id} {...swap}>
+                <NowPlayingCard track={nowPlaying} />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-        <SearchBar />
+        <motion.div
+          layout="position"
+          layoutDependency={hasTrack}
+          transition={SPRING}
+          className="w-full max-w-md"
+        >
+          <SearchBar />
+        </motion.div>
         {!hasTrack && showRecent === true && <RecentlyPlayed tracks={recent} />}
         <div className="spacer-outer" />
       </main>
-    </>
+    </MotionConfig>
   );
 }
 

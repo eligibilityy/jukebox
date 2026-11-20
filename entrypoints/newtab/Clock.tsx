@@ -1,4 +1,6 @@
+import { motion } from "motion/react";
 import { useState, useEffect } from "react";
+import { SPRING } from "./motion";
 import { useStorageValue } from "./useStorageValue";
 import { clockFormatItem, showDateItem } from "@/lib/settings";
 
@@ -44,12 +46,26 @@ export function Clock({ compact }: { compact: boolean }) {
     <div
       className={`flex items-center text-center ${compact ? "flex-col" : "flex-col-reverse"}`}
     >
-      {showDate === true && <p className="date">{date}</p>}
-      <h1 className={`clock ${compact ? "clock-compact" : ""}`}>
+      {showDate === true && (
+        <motion.p
+          layout="position"
+          layoutDependency={compact}
+          transition={SPRING}
+          className="date"
+        >
+          {date}
+        </motion.p>
+      )}
+      <motion.h1
+        layout
+        layoutDependency={compact}
+        transition={SPRING}
+        className={`clock ${compact ? "clock-compact" : ""}`}
+      >
         {hours}
         <span className="colon">:</span>
         {minutes}
-      </h1>
+      </motion.h1>
     </div>
   );
 }

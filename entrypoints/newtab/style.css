@@ -50,7 +50,6 @@ body {
 .spacer-outer,
 .spacer-center {
   min-height: 0;
-  transition: flex-grow 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .is-idle .spacer-outer {
@@ -77,7 +76,7 @@ body {
   align-items: center;
   max-width: 22rem;
   text-align: center;
-  transition: opacity 0.4s ease;
+  transition: opacity 250ms var(--ease-out);
 }
 
 .now-playing-link {
@@ -115,6 +114,11 @@ body {
   margin-bottom: 1.25rem;
   border-radius: 1rem;
   box-shadow: 0 30px 80px rgb(0 0 0 / 0.45);
+  transition: scale 150ms var(--ease-out);
+}
+
+.now-playing-link:active .cover {
+  scale: 0.97;
 }
 
 .track-title,
@@ -172,7 +176,6 @@ body {
   line-height: 1;
   letter-spacing: -0.02em;
   text-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
-  transition: font-size 0.9s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
@@ -183,6 +186,7 @@ body {
 .clock .colon {
   color: var(--accent);
   opacity: 0.4;
+  transition: --accent 500ms var(--ease-out);
 }
 
 .date {
@@ -196,9 +200,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   height: 100%;
   padding: 0 1.5rem;
-  transition: --accent 500ms var(--ease-out);
 }
 
 /* ─── Search ─── */
@@ -259,36 +263,12 @@ body {
   border-radius: 1.5rem;
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
-  transform-origin: top center;
-  transition:
-    opacity 150ms var(--ease-out),
-    transform 150ms var(--ease-out);
 }
 
-@starting-style {
-  .suggestions {
-    opacity: 0;
-    transform: translateY(-4px) scale(0.97);
-  }
-}
-
-/* Playing mode: the list opens upward, so it grows from the bottom */
+/* Playing mode: the list opens upward */
 .is-playing .suggestions {
   top: auto;
   bottom: calc(100% + 0.5rem);
-  transform-origin: bottom center;
-}
-
-@starting-style {
-  .is-playing .suggestions {
-    transform: translateY(4px) scale(0.97);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .suggestions {
-    transition-property: opacity;
-  }
 }
 
 .suggestion {
@@ -403,7 +383,13 @@ body {
   color: var(--text-muted);
   transition:
     color 150ms var(--ease-out),
-    background-color 150ms var(--ease-out);
+    background-color 150ms var(--ease-out),
+    scale 150ms var(--ease-out);
+}
+
+.account-trigger:active,
+.quick-dial-trigger:active {
+  scale: 0.97;
 }
 
 .account-trigger[data-popup-open],
@@ -485,6 +471,13 @@ body {
   width: 100%;
   max-width: 28rem;
   margin-top: 2rem;
+  transition: opacity 150ms var(--ease-out);
+}
+
+@starting-style {
+  .recent {
+    opacity: 0;
+  }
 }
 
 .recent-header {
@@ -513,17 +506,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.125rem;
-  transition:
-    opacity 250ms var(--ease-out),
-    transform 250ms var(--ease-out);
-  transition-delay: calc(var(--index) * 40ms);
-}
-
-@starting-style {
-  .recent-item {
-    opacity: 0;
-    transform: translateY(6px);
-  }
 }
 
 .recent-cover {
@@ -559,12 +541,6 @@ body {
 @media (hover: hover) {
   .recent-item:hover .recent-title {
     color: white;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .recent-item {
-    transition-property: opacity;
   }
 }
 
@@ -712,14 +688,6 @@ body {
   top: 1rem;
   left: 1rem;
   font-size: 0.875rem;
-}
-
-.quick-dial-icon {
-  transition: rotate 200ms var(--ease-out);
-}
-
-.quick-dial-trigger[data-popup-open] .quick-dial-icon {
-  rotate: 45deg;
 }
 
 .quick-dial-popup,
@@ -985,12 +953,10 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .quick-dial-popup,
-  .connect-popup {
+  .connect-popup,
+  .menu-popup,
+  .dialog-popup {
     transition-property: opacity;
-  }
-
-  .quick-dial-icon {
-    transition: none;
   }
 }
 
