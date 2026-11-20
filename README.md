@@ -1,9 +1,7 @@
 Jukebox
 =======
 
-A new tab extension that shows what you're listening to on Spotify. It has a clock, a search bar
-and a few quick links, and the background is an animated blur of the current
-album art.
+A new tab extension that shows what you're listening to on Spotify.
 
 ![Jukebox new tab page](docs/preview.png)
 
@@ -62,20 +60,15 @@ read access: `user-read-currently-playing`, `user-read-playback-state` and
 
 ### Last.fm
 
-Get an API key from [Last.fm](https://www.last.fm/api/account/create). No
-sign-in is needed. You just type a username.
+Get an API key from [Last.fm](https://www.last.fm/api/account/create) then you're free to log in via username.
 
 ## Development
 
 ```sh
-# Install deps
 bun install
-# Starts a browser with hot reload
 bun run dev
-# Builds the project
-bun run build
-# Builds and zips
-bun run zip
+bun run build # Builds the project
+bun run zip # Builds and zips
 
 # Tests/Checks
 bun run compile
@@ -85,20 +78,5 @@ bun run lint
 To load a build by hand, open `chrome://extensions`, turn on
 **Developer mode**, click **Load unpacked** and pick `.output/chrome-mv3`.
 
-The Firefox scripts (`dev:firefox`, `build:firefox`, `zip:firefox`) build, but
-Spotify sign-in is only set up for Chromium.
-
-## Permissions
-
-| Permission                   | Used for                                 |
-| ---------------------------- | ---------------------------------------- |
-| `identity`                   | Spotify sign-in                          |
-| `storage`                    | Settings, quick links and cached tracks  |
-| `search`                     | Searching with your default search engine |
-| `favicon`                    | Icons for quick dial links and bangs     |
-| `suggestqueries.google.com`  | Search suggestions                       |
-
-## Built with
-
-Track data comes from Spotify and [Last.fm](https://www.last.fm). This project
-is not affiliated with either.
+> [!NOTE]
+> Builds for other browsers like Firefox aren't set up yet
