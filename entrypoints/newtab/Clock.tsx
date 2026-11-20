@@ -31,7 +31,6 @@ export function Clock({ compact }: { compact: boolean }) {
   const hours = String(
     twelveHour ? time.getHours() % 12 || 12 : time.getHours(),
   );
-  // const period = time.getHours() < 12 ? "AM" : "PM";
 
   const minutes = String(time.getMinutes()).padStart(2, "0");
 
@@ -50,7 +49,6 @@ export function Clock({ compact }: { compact: boolean }) {
         {hours}
         <span className="colon">:</span>
         {minutes}
-        {/* {twelveHour && <span className="clock-period">{period}</span>} */}
       </h1>
     </div>
   );

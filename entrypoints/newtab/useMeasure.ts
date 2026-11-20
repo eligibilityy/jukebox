@@ -1,5 +1,3 @@
-// Tracks an element's rendered height. Measure an inner element and animate
-// its wrapper, never the same element, or the two feed back into each other.
 export function useMeasuredHeight<T extends HTMLElement>() {
   const ref = useRef<T>(null);
   const [height, setHeight] = useState(0);

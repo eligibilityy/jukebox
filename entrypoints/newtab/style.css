@@ -76,7 +76,6 @@ body {
   transition: opacity 0.4s ease;
 }
 
-/* Takes over the column layout now that the card is a div holding two links */
 .now-playing-link {
   display: flex;
   flex-direction: column;
@@ -689,16 +688,6 @@ body {
   outline-offset: 1px;
 }
 
-.clock-period {
-  position: absolute;
-  left: 100%;
-  bottom: 0.12em;
-  margin-left: 0.15em;
-  font-size: 0.3em;
-  letter-spacing: 0;
-  color: var(--text-muted);
-}
-
 /* ─── Quick dial ─── */
 .quick-dial {
   position: fixed;
@@ -715,7 +704,6 @@ body {
   rotate: 45deg;
 }
 
-/* Opens instantly (it's used many times a day), only the exit animates */
 .quick-dial-popup,
 .connect-popup {
   border: 1px solid var(--border);
@@ -743,12 +731,10 @@ body {
   width: 15rem;
 }
 
-/* AnimatedHeight (motion.tsx) animates this wrapper to its content's height */
 .animated-height {
   overflow: hidden;
 }
 
-/* Positioned so popLayout can pin outgoing content in place while it fades */
 .popup-content,
 .quick-dial-row {
   position: relative;
@@ -758,7 +744,6 @@ body {
   padding: 0.375rem;
 }
 
-/* Swaps scale from the top edge, where popovers are anchored */
 .swap {
   transform-origin: top center;
 }
@@ -842,7 +827,6 @@ body {
   color: var(--text-muted);
 }
 
-/* popLayout pulls removed rows out of the flow; they position against this */
 .quick-dial-rows {
   position: relative;
   display: flex;

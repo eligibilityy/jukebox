@@ -74,8 +74,6 @@ export function ConnectPopover({ busyLabel, onSpotify }: ConnectPopoverProps) {
                         type="button"
                         className="quick-dial-link"
                         onClick={() => {
-                          // Spotify opens its own login window; don't leave
-                          // this popover hanging open behind it
                           setOpen(false);
                           onSpotify();
                         }}

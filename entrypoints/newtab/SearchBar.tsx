@@ -64,7 +64,6 @@ export function SearchBar() {
   }, [query]);
 
   const activeBang = parseBang(query)?.bang;
-  // Typing a URL? Show a globe so it's clear Enter opens the site
   const SearchIcon = parseUrl(query.trim()) ? Globe : Search;
 
   const bangSuggestions =
