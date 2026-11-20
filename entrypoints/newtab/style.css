@@ -763,19 +763,10 @@ body {
   transform-origin: top center;
 }
 
-.service-dot {
+.service-icon {
   flex-shrink: 0;
-  width: 0.625rem;
-  height: 0.625rem;
-  border-radius: 9999px;
-}
-
-.service-dot-spotify {
-  background: #1ed760;
-}
-
-.service-dot-lastfm {
-  background: #d51007;
+  width: 1rem;
+  height: 1rem;
 }
 
 .connect-form {

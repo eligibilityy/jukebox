@@ -1,6 +1,7 @@
 import { Popover } from "@base-ui/react/popover";
 import { AnimatePresence, motion } from "motion/react";
 import { ChevronLeft, LoaderCircle } from "lucide-react";
+import { SiLastdotfm, SiSpotify } from "@icons-pack/react-simple-icons";
 import { useId, type SubmitEvent } from "react";
 import { getUserInfo, LastfmError } from "@/lib/lastfm/api";
 import { lastfmUserItem } from "@/lib/lastfm/source";
@@ -79,7 +80,11 @@ export function ConnectPopover({ busyLabel, onSpotify }: ConnectPopoverProps) {
                           onSpotify();
                         }}
                       >
-                        <span className="service-dot service-dot-spotify" />
+                        <SiSpotify
+                          className="service-icon"
+                          color="default"
+                          aria-hidden="true"
+                        />
                         Spotify
                       </button>
                       <button
@@ -87,7 +92,11 @@ export function ConnectPopover({ busyLabel, onSpotify }: ConnectPopoverProps) {
                         className="quick-dial-link"
                         onClick={() => setView("lastfm")}
                       >
-                        <span className="service-dot service-dot-lastfm" />
+                        <SiLastdotfm
+                          className="service-icon"
+                          color="default"
+                          aria-hidden="true"
+                        />
                         Last.fm
                       </button>
                     </>
